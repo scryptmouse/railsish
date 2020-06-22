@@ -77,7 +77,10 @@
     "watch": "yarn build:watch",
     "test": "run-s test:unit test:lint",
     "test:lint": "eslint src",
-    "test:unit": "jest"
+    "test:unit": "jest",
+    "preversion": "yarn test",
+    "version": "npm build",
+    "postversion": "git push && gitpush --tags"
   },
   "jest": {
     "collectCoverageFrom": [
