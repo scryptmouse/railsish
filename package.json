@@ -1,0 +1,124 @@
+{
+  "name": "railsish",
+  "version": "0.9.0",
+  "description": "Rails-like blank and presence helpers, with related property access methods",
+  "main": "dist/railsish.cjs.js",
+  "module": "dist/railsish.esm.js",
+  "browser": "dist/railsish.umd.js",
+  "exports": {
+    "./": {
+      "import": "./dist/railsish.esm.js",
+      "require": "./dist/railsish.cjs.js"
+    },
+    "./jest-matchers": {
+      "import": "./dist/railsish.jestMatchers.esm.js",
+      "require": "./dist/railsish.jestMatchers.cjs.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "license": "MIT",
+  "keywords": [
+    "blank",
+    "nonblank",
+    "presence",
+    "activesupport",
+    "isPresent",
+    "isBlank",
+    "ruby"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scryptmouse/railsish"
+  },
+  "homepage": "https://github.com/scryptmouse/railsish#readme",
+  "bugs": {
+    "url": "https://github.com/scryptmouse/railsish/issues"
+  },
+  "devDependencies": {
+    "@babel/core": "7.10.2",
+    "@babel/preset-env": "7.10.2",
+    "@emdaer/cli": "^3.2.31",
+    "@emdaer/plugin-documentation": "^3.2.31",
+    "@emdaer/plugin-import": "^3.2.31",
+    "@emdaer/plugin-jsdoc-tag-value": "^3.2.31",
+    "@emdaer/plugin-value-from-package": "^3.2.31",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "24.9.0",
+    "documentation": "^13.0.1",
+    "eslint": "^7.3.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jest": "^23.16.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "24.9.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.5",
+    "promisify-child-process": "^4.1.1",
+    "rollup": "1.32.1",
+    "rollup-plugin-babel": "4.4.0",
+    "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "tmp-promise": "^3.0.2"
+  },
+  "scripts": {
+    "docs": "documentation build src/main.js src/jest-matchers.js --config .doc/config.yml -f html -o docs",
+    "docs:api:md": "documentation build src/main.js src/jest-matchers.js --config .doc/config.yml -f md",
+    "prepare": "yarn build",
+    "build": "rollup -c",
+    "build:docs": "run-s docs build:readme",
+    "build:readme": "emdaer -y",
+    "build:watch": "rollup -c -w",
+    "watch": "yarn build:watch",
+    "test": "run-s test:unit test:lint",
+    "test:lint": "eslint src",
+    "test:unit": "jest"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/jest-matchers.js",
+      "!src/main.js",
+      "!<rootDir>/node_modules/"
+    ],
+    "coverageReporters": [
+      "clover",
+      "lcov",
+      "text"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/test/setupTests.js"
+    ]
+  },
+  "renovate": {
+    "extends": [
+      "config:js-lib"
+    ],
+    "automerge": true,
+    "major": {
+      "automerge": false
+    },
+    "automergeType": "branch"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "is-number": "^7.0.0",
+    "is-plain-object": "^3.0.0",
+    "lodash.get": "^4.4.2"
+  }
+}

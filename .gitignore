@@ -1,0 +1,8 @@
+coverage/
+dist/
+docs/
+node_modules/
+out/
+npm-debug.log
+yarn-error.log
+package-lock.json

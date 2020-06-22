@@ -1,0 +1,26 @@
+toc:
+  - name: Core functionality
+    file: ./core.md
+  - isPresent
+  - isBlank
+  - booleanize
+  - name: "Accessors"
+    file: ./access.md
+  - getPresent
+  - getBoolean
+  - getFunction
+  - getPresentNumber
+  - getPresentString
+  - getArray
+  - getPresentArray
+  - name: Utility
+    description: "Some additional lower-level helper methods that get used elsewhere"
+  - isPresentObject
+  - isBlankObject
+  - respondTo
+  - respondToPath
+  - name: Jest Matchers
+    file: ./matchers.md
+  - install
+  - matchers
+  - jestMatcherResult
